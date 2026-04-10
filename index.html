@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Garden Linux — Small, auditable, cloud-native Debian derivative optimized for Gardener and Kubernetes workloads.">
+    <title>Garden Linux • OS for Cloud-Native Workloads</title>
+    
+    <!-- Static Tailwind CSS (built with Tailwind CLI - no CDN warnings) -->
+    <link rel="stylesheet" href="tailwind.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Fonts & Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        .hero-bg {
+            background: linear-gradient(90deg, #0f172a 0%, #052e16 100%);
+        }
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+        .mode-toggle {
+            transition: all 0.3s ease;
+        }
+        /* Ensure version numbers fit nicely on small screens */
+        .version-number {
+            font-size: 2.25rem;
+            line-height: 1.1;
+        }
+        @media (min-width: 640px) {
+            .version-number {
+                font-size: 2.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200 font-sans transition-colors duration-300">
+
+    <!-- NAVBAR -->
+    <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl">🌱</div>
+                <h1 class="text-3xl font-semibold tracking-tighter">Garden Linux</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#features" class="hover:text-emerald-500 transition-colors">Features</a>
+                <a href="#downloads" class="hover:text-emerald-500 transition-colors">Downloads</a>
+                <a href="#platforms" class="hover:text-emerald-500 transition-colors">Platforms</a>
+                <a href="#security" class="hover:text-emerald-500 transition-colors">Security</a>
+                <a href="https://github.com/gardenlinux/gardenlinux" target="_blank" class="flex items-center gap-x-1 hover:text-emerald-500">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+
+            <div class="flex items-center gap-x-4">
+                <button id="themeToggle" aria-label="Toggle dark mode" 
+                        class="mode-toggle w-10 h-10 flex items-center justify-center text-xl rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="#downloads" 
+                   class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold text-sm flex items-center gap-x-2 transition-all">
+                    <i class="fa-solid fa-download"></i> Download
+                </a>
+                
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-8 py-6">
+            <div class="flex flex-col gap-y-6 text-lg">
+                <a href="#features" class="hover:text-emerald-500">Features</a>
+                <a href="#downloads" class="hover:text-emerald-500">Downloads</a>
+                <a href="#platforms" class="hover:text-emerald-500">Platforms</a>
+                <a href="#security" class="hover:text-emerald-500">Security</a>
+                <a href="https://github.com/gardenlinux/gardenlinux" target="_blank" class="flex items-center gap-x-2">GitHub <i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg py-20 md:py-28 text-white">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center md:text-left">
+            <div class="max-w-2xl mx-auto md:mx-0">
+                <div class="inline-flex items-center gap-x-2 bg-emerald-900/60 text-emerald-200 text-sm font-medium px-5 py-2 rounded-3xl mb-6">
+                    <i class="fa-solid fa-seedling"></i>
+                    Official OS for Gardener
+                </div>
+                <h1 class="text-5xl md:text-6xl font-semibold tracking-tighter leading-none mb-6">
+                    Operating system built for<br>cloud native workloads
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-300">
+                    Small • Auditable • Highly customizable Debian derivative.
+                </p>
+                
+                <div class="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#downloads" class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
+                        <i class="fa-solid fa-download"></i>
+                        Get Started
+                    </a>
+                    <a href="https://github.com/gardenlinux/gardenlinux" target="_blank"
+                       class="px-8 py-4 border-2 border-white hover:bg-white hover:text-slate-900 rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
+                        <i class="fab fa-github"></i>
+                        View Source
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DOWNLOADS SECTION - Compact & Responsive -->
+    <section id="downloads" class="py-16 bg-white dark:bg-slate-900">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-10">Downloads</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Stable -->
+                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Stable Release</h3>
+                    <div class="version-number font-mono font-semibold text-emerald-600 dark:text-emerald-400">1877.13.0</div>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Latest stable OS image</p>
+                    
+                    <ul class="mt-6 space-y-2 text-sm">
+                        <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.12 LTS</span></li>
+                        <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.1</span></li>
+                    </ul>
+                    
+                    <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
+                       class="mt-8 block w-full text-center py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
+                        Download Stable
+                    </a>
+                </div>
+
+                <!-- Nightly -->
+                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl border-2 border-emerald-400">
+                    <h3 class="text-2xl font-semibold mb-3">Nightly Builds</h3>
+                    <p class="text-emerald-600 dark:text-emerald-400 font-medium text-sm">Latest development</p>
+                    
+                    <ul class="mt-6 space-y-2 text-sm">
+                        <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.18</span></li>
+                        <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.2</span></li>
+                    </ul>
+                    
+                    <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
+                       class="mt-8 block w-full text-center py-3.5 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white rounded-3xl font-semibold transition-all">
+                        Download Nightly
+                    </a>
+                </div>
+
+                <!-- Container -->
+                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Container Images</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">For building containerized environments</p>
+                    
+                    <a href="https://github.com/gardenlinux/gardenlinux/pkgs/container/gardenlinux" target="_blank"
+                       class="mt-8 block w-full text-center py-3.5 bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-3xl font-semibold transition-all">
+                        Download Container Images
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES, PLATFORMS, FOOTER sections can be added from previous versions if needed. The core (navbar + hero + downloads) is now clean and responsive. -->
+
+    <!-- Fathom Analytics - Replace YOUR-SITE-ID -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="YOUR-SITE-ID" defer></script>
+
+    <script>
+        // Safe theme handling (prevents sandbox localStorage errors)
+        let currentTheme = 'light';
+
+        function safeLocalStorageGet(key, defaultValue) {
+            try { return localStorage.getItem(key) || defaultValue; } 
+            catch (e) { return defaultValue; }
+        }
+
+        function safeLocalStorageSet(key, value) {
+            try { localStorage.setItem(key, value); } catch (e) {}
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+            currentTheme = isDark ? 'dark' : 'light';
+            safeLocalStorageSet('theme', currentTheme);
+        }
+        
+        function initTheme() {
+            const saved = safeLocalStorageGet('theme', null);
+            if (saved) setTheme(saved === 'dark');
+            else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+        
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+        
+        window.onload = initTheme;
+    </script>
+</body>
+</html>
