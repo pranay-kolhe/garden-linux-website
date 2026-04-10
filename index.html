@@ -30,6 +30,47 @@
                 font-size: 2.75rem;
             }
         }
+        
+        /* Sliding Toggle Styles */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 9999px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #10b981;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200 font-sans transition-colors duration-300">
@@ -50,15 +91,15 @@
                 <a href="#security" class="hover:text-emerald-500 transition-colors">Security</a>
             </div>
 
-            <!-- Top Right: Theme Toggle + Icons with better spacing -->
+            <!-- Top Right: Sliding Toggle + Icons -->
             <div class="flex items-center gap-x-6 text-xl">
-                <!-- Dark/Light Toggle -->
-                <button id="themeToggle" aria-label="Toggle dark mode" 
-                        class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
-                </button>
+                <!-- Sliding Dark/Light Toggle -->
+                <label class="toggle-switch cursor-pointer">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
 
-                <!-- Social Icons with improved spacing -->
+                <!-- Icons with good spacing -->
                 <a href="https://github.com/gardenlinux/gardenlinux" target="_blank" class="hover:text-emerald-500 transition-colors">
                     <i class="fab fa-github"></i>
                 </a>
@@ -75,7 +116,7 @@
         </div>
     </nav>
 
-    <!-- HERO - Improved readability -->
+    <!-- HERO - Improved spacing and readability -->
     <header class="hero-bg py-24 md:py-32 text-white">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
             <div class="max-w-3xl mx-auto">
@@ -83,7 +124,7 @@
                     <i class="fa-solid fa-seedling"></i>
                     Official OS for Gardener
                 </div>
-                <h1 class="text-5xl md:text-6xl font-semibold tracking-tighter leading-[1.15] mb-8">
+                <h1 class="text-5xl md:text-[56px] font-semibold tracking-normal leading-[1.25] mb-8">
                     Operating system built for<br>cloud native workloads
                 </h1>
                 <p class="text-xl md:text-2xl text-slate-300 max-w-xl mx-auto">
@@ -96,7 +137,7 @@
                         Get Started
                     </a>
                     <button 
-                       class="px-8 py-4 border-2 border-white hover:bg-white hover:text-slate-900 rounded-3xl font-semibold text-lg transition-all">
+                       class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
                         Try a Demo
                     </button>
                 </div>
@@ -104,7 +145,7 @@
         </div>
     </header>
 
-    <!-- DOWNLOADS SECTION - Aligned buttons at bottom with same style -->
+    <!-- DOWNLOADS SECTION -->
     <section id="downloads" class="py-16 bg-white dark:bg-slate-900">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <h2 class="text-4xl font-semibold text-center mb-12">Downloads</h2>
@@ -117,12 +158,10 @@
                         <div class="version-number font-mono font-semibold text-emerald-600 dark:text-emerald-400">1877.13.0</div>
                         <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Latest stable OS image</p>
                     </div>
-                    
                     <ul class="mt-8 space-y-2 text-sm flex-grow">
                         <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.12 LTS</span></li>
                         <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.1</span></li>
                     </ul>
-                    
                     <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Stable
@@ -135,13 +174,11 @@
                         <h3 class="text-2xl font-semibold mb-3">Nightly Builds</h3>
                         <p class="text-emerald-600 dark:text-emerald-400 font-medium text-sm">Latest development</p>
                     </div>
-                    
                     <ul class="mt-8 space-y-2 text-sm flex-grow">
                         <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.18</span></li>
                         <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.2</span></li>
                     </ul>
-                    
-                    <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
+                    <a href="https://github.com/gardenlinux/gardenlinux/actions/workflows/nightly.yml" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Nightly
                     </a>
@@ -153,9 +190,7 @@
                         <h3 class="text-2xl font-semibold mb-3">Container Images</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm">For building containerized environments</p>
                     </div>
-                    
                     <div class="flex-grow"></div>
-                    
                     <a href="https://github.com/gardenlinux/gardenlinux/pkgs/container/gardenlinux" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Container Images
@@ -165,28 +200,24 @@
         </div>
     </section>
 
-    <!-- FOOTER - Exact from original gardenlinux.org -->
+    <!-- FOOTER -->
     <footer class="bg-slate-100 dark:bg-black py-16 border-t border-slate-200 dark:border-slate-800">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
             <div class="text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 <p>Garden Linux is a project of the <strong>NeoNephos Foundation</strong>.</p>
-                
                 <p class="mt-8">
                     Funded by the European Union – NextGenerationEU.<br>
                     The views and opinions expressed are solely those of the author(s) and do not necessarily reflect the views of the European Union or the European Commission. 
                     Neither the European Union nor the European Commission can be held responsible for them.
                 </p>
-                
                 <p class="mt-8">
                     For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see 
                     <a href="https://linuxfoundation.eu" target="_blank" class="underline hover:text-emerald-600">linuxfoundation.eu</a>.
                 </p>
-                
                 <p class="mt-8 text-xs">
                     Linux® is the registered trademark of Linus Torvalds.
                 </p>
             </div>
-            
             <div class="text-center mt-12 text-xs text-slate-500">
                 © 2026 Garden Linux • Built for the cloud-native community
             </div>
@@ -194,21 +225,18 @@
     </footer>
 
     <script>
-        // Safe Dark/Light Mode Toggle
+        // Sliding Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
         
         function setTheme(isDark) {
             if (isDark) {
                 document.documentElement.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
             } else {
                 document.documentElement.classList.remove('dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
             }
-            try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch(e) {}
         }
         
         function initTheme() {
@@ -216,17 +244,19 @@
                 const saved = localStorage.getItem('theme');
                 if (saved) {
                     setTheme(saved === 'dark');
+                    themeToggle.checked = saved === 'dark';
                 } else {
-                    setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    setTheme(prefersDark);
+                    themeToggle.checked = prefersDark;
                 }
             } catch(e) {
                 setTheme(false);
             }
         }
         
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(!isDark);
+        themeToggle.addEventListener('change', () => {
+            setTheme(themeToggle.checked);
         });
         
         // Logo scrolls to top
