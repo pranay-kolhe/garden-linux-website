@@ -6,10 +6,7 @@
     <meta name="description" content="Garden Linux — Small, auditable, cloud-native Debian derivative optimized for Gardener and Kubernetes workloads.">
     <title>Garden Linux • OS for Cloud-Native Workloads</title>
     
-    <!-- Static Tailwind CSS (built with Tailwind CLI) -->
     <link rel="stylesheet" href="tailwind.css">
-    
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -40,7 +37,7 @@
     <!-- NAVBAR -->
     <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
-            <!-- Clickable Logo / Title - scrolls to top -->
+            <!-- Clickable Logo -->
             <a href="#" class="flex items-center gap-x-3 hover:opacity-80 transition-opacity">
                 <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl">🌱</div>
                 <h1 class="text-3xl font-semibold tracking-tighter">Garden Linux</h1>
@@ -53,8 +50,15 @@
                 <a href="#security" class="hover:text-emerald-500 transition-colors">Security</a>
             </div>
 
-            <!-- Top Right Icons -->
-            <div class="flex items-center gap-x-5 text-xl">
+            <!-- Top Right: Theme Toggle + Icons with better spacing -->
+            <div class="flex items-center gap-x-6 text-xl">
+                <!-- Dark/Light Toggle -->
+                <button id="themeToggle" aria-label="Toggle dark mode" 
+                        class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Social Icons with improved spacing -->
                 <a href="https://github.com/gardenlinux/gardenlinux" target="_blank" class="hover:text-emerald-500 transition-colors">
                     <i class="fab fa-github"></i>
                 </a>
@@ -71,81 +75,89 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero-bg py-20 md:py-28 text-white">
+    <!-- HERO - Improved readability -->
+    <header class="hero-bg py-24 md:py-32 text-white">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
-            <div class="max-w-2xl mx-auto">
-                <div class="inline-flex items-center gap-x-2 bg-emerald-900/60 text-emerald-200 text-sm font-medium px-5 py-2 rounded-3xl mb-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-x-2 bg-emerald-900/60 text-emerald-200 text-sm font-medium px-5 py-2 rounded-3xl mb-8">
                     <i class="fa-solid fa-seedling"></i>
                     Official OS for Gardener
                 </div>
-                <h1 class="text-5xl md:text-6xl font-semibold tracking-tighter leading-none mb-6">
+                <h1 class="text-5xl md:text-6xl font-semibold tracking-tighter leading-[1.15] mb-8">
                     Operating system built for<br>cloud native workloads
                 </h1>
-                <p class="text-xl md:text-2xl text-slate-300">
+                <p class="text-xl md:text-2xl text-slate-300 max-w-xl mx-auto">
                     Small • Auditable • Highly customizable Debian derivative.
                 </p>
                 
-                <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                <div class="mt-12 flex flex-wrap gap-4 justify-center">
                     <a href="#downloads" 
                        class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
                         Get Started
                     </a>
-                    <a href="https://gardener.cloud/" target="_blank"
+                    <button 
                        class="px-8 py-4 border-2 border-white hover:bg-white hover:text-slate-900 rounded-3xl font-semibold text-lg transition-all">
                         Try a Demo
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- DOWNLOADS SECTION -->
+    <!-- DOWNLOADS SECTION - Aligned buttons at bottom with same style -->
     <section id="downloads" class="py-16 bg-white dark:bg-slate-900">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-10">Downloads</h2>
+            <h2 class="text-4xl font-semibold text-center mb-12">Downloads</h2>
             
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Stable -->
-                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl">
-                    <h3 class="text-2xl font-semibold mb-3">Stable Release</h3>
-                    <div class="version-number font-mono font-semibold text-emerald-600 dark:text-emerald-400">1877.13.0</div>
-                    <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Latest stable OS image</p>
+                <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3">Stable Release</h3>
+                        <div class="version-number font-mono font-semibold text-emerald-600 dark:text-emerald-400">1877.13.0</div>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Latest stable OS image</p>
+                    </div>
                     
-                    <ul class="mt-6 space-y-2 text-sm">
+                    <ul class="mt-8 space-y-2 text-sm flex-grow">
                         <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.12 LTS</span></li>
                         <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.1</span></li>
                     </ul>
                     
                     <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
-                       class="mt-8 block w-full text-center py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
+                       class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Stable
                     </a>
                 </div>
 
                 <!-- Nightly -->
-                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl border-2 border-emerald-400">
-                    <h3 class="text-2xl font-semibold mb-3">Nightly Builds</h3>
-                    <p class="text-emerald-600 dark:text-emerald-400 font-medium text-sm">Latest development</p>
+                <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3">Nightly Builds</h3>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-medium text-sm">Latest development</p>
+                    </div>
                     
-                    <ul class="mt-6 space-y-2 text-sm">
+                    <ul class="mt-8 space-y-2 text-sm flex-grow">
                         <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.18</span></li>
                         <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.2</span></li>
                     </ul>
                     
                     <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
-                       class="mt-8 block w-full text-center py-3.5 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white rounded-3xl font-semibold transition-all">
+                       class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Nightly
                     </a>
                 </div>
 
-                <!-- Container Images -->
-                <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-3xl">
-                    <h3 class="text-2xl font-semibold mb-3">Container Images</h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm">For building containerized environments</p>
+                <!-- Container -->
+                <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3">Container Images</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">For building containerized environments</p>
+                    </div>
+                    
+                    <div class="flex-grow"></div>
                     
                     <a href="https://github.com/gardenlinux/gardenlinux/pkgs/container/gardenlinux" target="_blank"
-                       class="mt-8 block w-full text-center py-3.5 bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-3xl font-semibold transition-all">
+                       class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Container Images
                     </a>
                 </div>
@@ -153,7 +165,7 @@
         </div>
     </section>
 
-    <!-- FOOTER - Exact content from original gardenlinux.org + styled like gardener.cloud -->
+    <!-- FOOTER - Exact from original gardenlinux.org -->
     <footer class="bg-slate-100 dark:bg-black py-16 border-t border-slate-200 dark:border-slate-800">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
             <div class="text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -182,11 +194,48 @@
     </footer>
 
     <script>
-        // Smooth scroll to top when clicking logo
+        // Safe Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+            try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
+        }
+        
+        function initTheme() {
+            try {
+                const saved = localStorage.getItem('theme');
+                if (saved) {
+                    setTheme(saved === 'dark');
+                } else {
+                    setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+                }
+            } catch(e) {
+                setTheme(false);
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+        
+        // Logo scrolls to top
         document.querySelector('a[href="#"]').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+        
+        window.onload = initTheme;
     </script>
 </body>
 </html>
