@@ -15,12 +15,6 @@
         .hero-bg {
             background: linear-gradient(90deg, #0f172a 0%, #052e16 100%);
         }
-        .feature-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .feature-card:hover {
-            transform: translateY(-8px);
-        }
         .version-number {
             font-size: 2.25rem;
             line-height: 1.1;
@@ -31,7 +25,7 @@
             }
         }
         
-        /* Sliding Toggle Styles */
+        /* Sliding Toggle - styled exactly like Gardener.cloud */
         .toggle-switch {
             position: relative;
             display: inline-block;
@@ -64,6 +58,10 @@
             background-color: white;
             transition: .4s;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
         }
         input:checked + .slider {
             background-color: #10b981;
@@ -78,51 +76,40 @@
     <!-- NAVBAR -->
     <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
-            <!-- Clickable Logo -->
+            <!-- Logo -->
             <a href="#" class="flex items-center gap-x-3 hover:opacity-80 transition-opacity">
                 <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl">🌱</div>
                 <h1 class="text-3xl font-semibold tracking-tighter">Garden Linux</h1>
             </a>
             
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="#features" class="hover:text-emerald-500 transition-colors">Features</a>
-                <a href="#platforms" class="hover:text-emerald-500 transition-colors">Platforms</a>
-                <a href="#security" class="hover:text-emerald-500 transition-colors">Security</a>
-            </div>
-
-            <!-- Top Right: Sliding Toggle + Icons -->
-            <div class="flex items-center gap-x-6 text-xl">
-                <!-- Sliding Dark/Light Toggle -->
-                <label class="toggle-switch cursor-pointer">
+            <!-- Menu + Toggle -->
+            <div class="flex items-center gap-x-8">
+                <!-- Menu items -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-emerald-500 transition-colors">About</a>
+                    <a href="#documentation" class="hover:text-emerald-500 transition-colors">Documentation</a>
+                    <a href="#community" class="hover:text-emerald-500 transition-colors">Community</a>
+                </div>
+                
+                <!-- Vertical Separator -->
+                <div class="hidden md:block w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
+                
+                <!-- Sliding Toggle -->
+                <label class="toggle-switch cursor-pointer" title="Toggle theme">
                     <input type="checkbox" id="themeToggle">
                     <span class="slider"></span>
                 </label>
-
-                <!-- Icons with good spacing -->
-                <a href="https://github.com/gardenlinux/gardenlinux" target="_blank" class="hover:text-emerald-500 transition-colors">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.youtube.com/watch?v=SKcRo7BvfWY" target="_blank" class="hover:text-emerald-500 transition-colors">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://community.sap.com/t5/open-source-blog-posts/garden-linux-fellowship-retrospective/ba-p/13579463" target="_blank" class="hover:text-emerald-500 transition-colors">
-                    <i class="fab fa-sap"></i>
-                </a>
-                <a href="#" class="hover:text-emerald-500 transition-colors">
-                    <i class="fab fa-slack"></i>
-                </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO - Improved spacing and readability -->
+    <!-- HERO -->
     <header class="hero-bg py-24 md:py-32 text-white">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
             <div class="max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-x-2 bg-emerald-900/60 text-emerald-200 text-sm font-medium px-5 py-2 rounded-3xl mb-8">
-                    <i class="fa-solid fa-seedling"></i>
-                    Official OS for Gardener
+                    Official OS for 
+                    <a href="https://gardener.cloud/" target="_blank" class="underline hover:text-emerald-300">Gardener</a>
                 </div>
                 <h1 class="text-5xl md:text-[56px] font-semibold tracking-normal leading-[1.25] mb-8">
                     Operating system built for<br>cloud native workloads
@@ -133,11 +120,11 @@
                 
                 <div class="mt-12 flex flex-wrap gap-4 justify-center">
                     <a href="#downloads" 
-                       class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
+                       class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg transition-all">
                         Get Started
                     </a>
                     <button 
-                       class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
+                       class="px-8 py-4 bg-white text-slate-900 hover:bg-emerald-400 hover:text-white rounded-3xl font-semibold text-lg transition-all">
                         Try a Demo
                     </button>
                 </div>
@@ -153,15 +140,17 @@
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Stable -->
                 <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-3">Stable Release</h3>
-                        <div class="version-number font-mono font-semibold text-emerald-600 dark:text-emerald-400">1877.13.0</div>
-                        <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Latest stable OS image</p>
+                    <h3 class="text-2xl font-semibold mb-4">Stable Release</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Latest stable OS image: <span class="font-medium text-emerald-600 dark:text-emerald-400">1877.13.0</span></p>
+                    
+                    <div class="mt-6">
+                        <p class="font-medium mb-2">Includes:</p>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between"><span class="text-slate-500">Linux LTS Kernel</span><span class="font-medium">6.12</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.1</span></div>
+                        </div>
                     </div>
-                    <ul class="mt-8 space-y-2 text-sm flex-grow">
-                        <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.12 LTS</span></li>
-                        <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.1</span></li>
-                    </ul>
+                    
                     <a href="https://github.com/gardenlinux/gardenlinux/releases" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Stable
@@ -170,26 +159,27 @@
 
                 <!-- Nightly -->
                 <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-3">Nightly Builds</h3>
-                        <p class="text-emerald-600 dark:text-emerald-400 font-medium text-sm">Latest development</p>
+                    <h3 class="text-2xl font-semibold mb-4">Nightly Builds</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Latest cutting-edge OS image</p>
+                    
+                    <div class="mt-6">
+                        <p class="font-medium mb-2">Includes:</p>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between"><span class="text-slate-500">Linux LTS Kernel</span><span class="font-medium">6.18</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.2</span></div>
+                        </div>
                     </div>
-                    <ul class="mt-8 space-y-2 text-sm flex-grow">
-                        <li class="flex justify-between"><span class="text-slate-500">Kernel</span><span class="font-medium">6.18</span></li>
-                        <li class="flex justify-between"><span class="text-slate-500">containerd</span><span class="font-medium">2.2</span></li>
-                    </ul>
+                    
                     <a href="https://github.com/gardenlinux/gardenlinux/actions/workflows/nightly.yml" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
                         Download Nightly
                     </a>
                 </div>
 
-                <!-- Container -->
+                <!-- Container Images -->
                 <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl flex flex-col h-full">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-3">Container Images</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm">For building containerized environments</p>
-                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Container Images</h3>
+                    <p class="text-slate-500 dark:text-slate-400">For building containerized environments</p>
                     <div class="flex-grow"></div>
                     <a href="https://github.com/gardenlinux/gardenlinux/pkgs/container/gardenlinux" target="_blank"
                        class="mt-auto block w-full text-center py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
@@ -200,32 +190,42 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER with icons -->
     <footer class="bg-slate-100 dark:bg-black py-16 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
-            <div class="text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                <p>Garden Linux is a project of the <strong>NeoNephos Foundation</strong>.</p>
-                <p class="mt-8">
-                    Funded by the European Union – NextGenerationEU.<br>
-                    The views and opinions expressed are solely those of the author(s) and do not necessarily reflect the views of the European Union or the European Commission. 
-                    Neither the European Union nor the European Commission can be held responsible for them.
-                </p>
-                <p class="mt-8">
-                    For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see 
-                    <a href="https://linuxfoundation.eu" target="_blank" class="underline hover:text-emerald-600">linuxfoundation.eu</a>.
-                </p>
-                <p class="mt-8 text-xs">
-                    Linux® is the registered trademark of Linus Torvalds.
-                </p>
-            </div>
-            <div class="text-center mt-12 text-xs text-slate-500">
-                © 2026 Garden Linux • Built for the cloud-native community
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="flex flex-col md:flex-row gap-8 items-start justify-center text-sm text-slate-600 dark:text-slate-400">
+                <!-- EU Funding -->
+                <div class="flex gap-4 max-w-md">
+                    <img src="https://camo.githubusercontent.com/d97b00c028c7c22271fccbb81fcbd8c0a11ce06183574ca82285552278a62ebd/68747470733a2f2f61706569726f72612e65752f6173736574732f696d672f424d574b2d45552e706e67" 
+                         alt="Funded by the European Union" class="h-8 mt-1">
+                    <div>
+                        <p>Funded by the European Union – NextGenerationEU.</p>
+                        <p class="mt-2 text-xs">
+                            The views and opinions expressed are solely those of the author(s) and do not necessarily reflect the views of the European Union or the European Commission. 
+                            Neither the European Union nor the European Commission can be held responsible for them.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NeoNephos + Policies -->
+                <div class="flex gap-4 max-w-md">
+                    <a href="https://neonephos.org/" target="_blank" class="text-2xl hover:text-emerald-500">🌱</a>
+                    <div>
+                        <p>Garden Linux is a project of <a href="https://neonephos.org/" target="_blank" class="underline hover:text-emerald-500">NeoNephos Foundation</a>.</p>
+                        <p class="mt-3 text-xs">
+                            Copyright © 2026 The Linux Foundation Europe. All rights reserved.<br>
+                            For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see 
+                            <a href="https://linuxfoundation.eu" target="_blank" class="underline hover:text-emerald-500">linuxfoundation.eu</a>.<br>
+                            Linux® is the registered trademark of Linus Torvalds.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Sliding Toggle Functionality
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         
         function setTheme(isDark) {
@@ -250,16 +250,14 @@
                     setTheme(prefersDark);
                     themeToggle.checked = prefersDark;
                 }
-            } catch(e) {
-                setTheme(false);
-            }
+            } catch(e) {}
         }
         
         themeToggle.addEventListener('change', () => {
             setTheme(themeToggle.checked);
         });
         
-        // Logo scrolls to top
+        // Logo scroll to top
         document.querySelector('a[href="#"]').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
